@@ -73,3 +73,11 @@
 - **Hiring-system senders:** myworkdayjobs, greenhouse, lever, smartrecruiters, workable, bamboohr, jobstreet, kalibrr, indeed (application updates), linkedin (application updates only)
 - **Ignore:** job-alert newsletters ("jobs you may be interested in", "new jobs for you", "recommended jobs"), webinar and course promos
 - Unsure matches go to "Needs a look", never a guessed status
+
+---
+
+## Amendment 2026-10-19 (approved by owner during `/pm`)
+- **Deliverable 2 confirmed as written:** `/tailor` itself adds the Notion row (option A), via a small PR to resume-tailor.
+- **Added to scope: `/jobadd <link>`** (JT-011). Reads a job posting the owner applied to without /tailor and adds a filled-in Notion row. Read-only on job sites.
+- **Added status "Assessment"** between Applied and Interview, since assessment emails are classified separately.
+- **A confirmation email moves a Drafting row to Applied** and starts the 7-day no-reply clock.

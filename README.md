@@ -13,7 +13,8 @@ After /tailor, track every application in Notion and watch Gmail for replies, so
 Full brief: `docs/BRIEF.md`.
 
 ## Next steps
-- [ ] Open this folder in Claude Code and run `/pm` to turn the brief into a backlog
+- [x] `/pm` backlog JT-001..011 approved
+- [ ] `/architect Work on JT-001`
 
 ## Links
 - Brief: `docs/BRIEF.md`
@@ -21,3 +22,4 @@ Full brief: `docs/BRIEF.md`.
 
 ## Log
 - 2026-10-19 - Brief approved. Project created.
+- 2026-10-19 - /pm backlog approved: 11 stories in 5 epics (JT-001..011). Brief amended: /jobadd added, /tailor option A confirmed, Assessment status.
