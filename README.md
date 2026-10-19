@@ -14,7 +14,9 @@ Full brief: `docs/BRIEF.md`.
 
 ## Next steps
 - [x] `/pm` backlog JT-001..011 approved
-- [ ] `/architect Work on JT-001`
+- [x] JT-001 Notion "Job Tracker" page + 3 databases (see `docs/NOTION.md`)
+- [ ] Owner: in Notion, drag the "Board" tab before "All" in Job Applications
+- [ ] `/architect Work on JT-002`
 
 ## Links
 - Brief: `docs/BRIEF.md`
@@ -23,3 +25,4 @@ Full brief: `docs/BRIEF.md`.
 ## Log
 - 2026-10-19 - Brief approved. Project created.
 - 2026-10-19 - /pm backlog approved: 11 stories in 5 epics (JT-001..011). Brief amended: /jobadd added, /tailor option A confirmed, Assessment status.
+- 2026-10-19 - JT-001 done: private Notion "Job Tracker" page with Job Applications, Email Log and Runs databases; QA passed (Runs ID typo fixed); merged to main locally (f4af7c8). Owner step: drag Board tab first.
