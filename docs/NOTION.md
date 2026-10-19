@@ -64,7 +64,7 @@ One row per job email handled. Subject and IDs only.
 
 One row per inbox check. Gives the next run its start time and shows cloud runs happened.
 
-- Database ID: `46f43686-83ad-45ff-8d9a-fc695c836dab`
+- Database ID: `46f43686-83ad-45ff-9d8a-fc695c836dab`
 - Data source: `collection://e0d0fd0e-ad3c-44b3-815a-0b6f1feff944`
 
 | Property | Type | Options / notes |
