@@ -65,6 +65,8 @@
 - Gmail checks look back to the last successful run (first run: last 30 days)
 
 ## Starting keyword / sender list (from the approval chat)
+> Superseded by `rules/email-rules.md` (JT-004, 2026-10-20), which splits search words from sorting words. Edit that file, not this list.
+
 - **Status:** application, applied, "thank you for applying", "received your application", candidate, candidacy, position, role, vacancy, opening, shortlisted, "next steps", "moving forward", "under review"
 - **Interview:** interview, "phone screen", screening, "initial call", "schedule a call", availability, "available for", Calendly, "Google Meet", Zoom, "Microsoft Teams", "final interview", panel
 - **Assessment:** assessment, "technical exam", "take-home", "case study", HackerRank, Codility, TestGorilla, "skills test"
