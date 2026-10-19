@@ -16,13 +16,15 @@ Full brief: `docs/BRIEF.md`.
 - [x] `/pm` backlog JT-001..011 approved
 - [x] JT-001 Notion "Job Tracker" page + 3 databases (see `docs/NOTION.md`)
 - [ ] Owner: in Notion, drag the "Board" tab before "All" in Job Applications
-- [ ] `/architect Work on JT-002`
+- [x] JT-002 4 applications imported to Notion; TRACKER.md has a banner (retires in JT-003)
+- [ ] `/architect Work on JT-003`
 
 ## Links
 - Brief: `docs/BRIEF.md`
-- Related: `90-Archive/2026-10_resume-tailor` (/tailor, current TRACKER.md)
+- Related: `10-Active/2026-10_resume-tailor` (/tailor, current TRACKER.md)
 
 ## Log
 - 2026-10-19 - Brief approved. Project created.
 - 2026-10-19 - /pm backlog approved: 11 stories in 5 epics (JT-001..011). Brief amended: /jobadd added, /tailor option A confirmed, Assessment status.
 - 2026-10-19 - JT-001 done: private Notion "Job Tracker" page with Job Applications, Email Log and Runs databases; QA passed (Runs ID typo fixed); merged to main locally (f4af7c8). Owner step: drag Board tab first.
+- 2026-10-19 - JT-002 done: 4 applications imported to Notion (2 Applied, 2 Withdrawn), owner confirmed; TRACKER.md banner added, retirement moved to JT-003.
