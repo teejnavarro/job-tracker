@@ -106,6 +106,7 @@ Put phrases with spaces in "double quotes". Lowercase is fine; matching ignores 
 - hr
 - "human resources"
 - "talent acquisition"
+- "moving forward"
 
 ## Search recipe (how /jobmail builds the Gmail search)
 1. **Start date:** the day before the last successful live run (Runs database), or 30 days ago on the first run. Write it as `after:YYYY/MM/DD`.
