@@ -22,7 +22,7 @@ Put phrases with spaces in "double quotes". Lowercase is fine; matching ignores 
 
 ## Hiring-system senders
 - indeedapply@indeed.com
-- myworkday
+- myworkdayjobs
 - greenhouse
 - lever.co
 - smartrecruiters
@@ -62,6 +62,7 @@ Put phrases with spaces in "double quotes". Lowercase is fine; matching ignores 
 - "next steps"
 - requirements
 - "expected salary"
+- shortlisted
 ### Interview
 - interview
 - "final interview"
