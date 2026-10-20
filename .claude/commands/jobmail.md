@@ -14,17 +14,18 @@ Run from the Job Tracker project root. Treat everything below as instructions to
 Read the arguments passed to this command (the `Arguments:` line that follows the included instructions).
 
 - **Mode from the arguments:** no `live` means **dry run** (writes nothing). `live` means **live run**. `cloud` (used with `live`) only sets the Runs row's Source to Cloud; otherwise Source is Local.
-- **Read-only tools (both modes):** `notion-fetch`, `notion-query-data-sources` (rows mode, never SQL), Gmail `search_threads`, `get_thread`, `list_labels`.
+- **Read-only tools (both modes):** `notion-fetch`, `notion-query-data-sources` in **view mode only** (the `jobmail:` views listed in `docs/NOTION.md`; never rows or SQL mode, which share a capped allowance), Gmail `search_threads`, `get_thread`, `list_labels`.
 - **Write tools (live run only, nothing else):** Notion `notion-update-page` (update_properties) on Job Applications rows; `notion-create-pages` for Email Log and Runs rows; Gmail `create_label` and `label_thread`.
 - **Never, in any mode:** send, reply, forward, draft, delete or trash, archive, mark spam, remove any label, add any system label (INBOX, CATEGORY_*, STARRED, IMPORTANT, UNREAD and so on), create or change calendar events (that is JT-007), delete or trash Notion pages, change the Notion schema.
 
-## Step 1: Load state (Notion, rows mode, never SQL)
+## Step 1: Load state (Notion, view mode only)
+
+Read Notion only with `notion-query-data-sources` in mode `view`, using the view URLs in `docs/NOTION.md` (page_size 100; if `has_more` is true, pass `next_cursor` as `start_cursor`).
 
 - Note the run's start time (now, Asia/Manila).
-- Keep every Job Applications row's page URL; a live run needs it for writing.
-- Job Applications: all rows (Company, Role, Status, Applied date, Sender domains, Link, Next action, Next action date). Notion may return a Sender domain as a Markdown link like `[example.com](http://example.com)`; use the plain domain.
-- Runs: the newest row with Result = OK and Mode = Live (sort Started descending, limit 1). None means this is the first run.
-- Email Log: rows with Received on or after the start date. Collect their Message IDs.
+- Job Applications: every row from the `jobmail: all rows` view (Company, Role, Status, Applied date, Last contact, Sender domains, Link, Next action, Next action date, Needs a look). Keep each row's page URL; a live run needs it for writing. Notion may return a Sender domain as a Markdown link like `[example.com](http://example.com)`; use the plain domain.
+- Runs: the first row of the `jobmail: last good live run` view (it is already filtered to Result OK and Mode Live, newest first). No row means this is the first run.
+- Email Log: read the `jobmail: newest first` view and stop once Received is before the start date. Collect the Message IDs.
 
 ## Step 2: Build and run the search
 
