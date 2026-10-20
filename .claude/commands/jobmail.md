@@ -15,7 +15,7 @@ Dry run only. Never write to Gmail, Notion or Google Calendar: no labels, no row
 
 ## Step 1: Load state (Notion, rows mode, never SQL)
 
-- Job Applications: all rows (Company, Role, Status, Applied date, Sender domains, Link, Next action, Next action date).
+- Job Applications: all rows (Company, Role, Status, Applied date, Sender domains, Link, Next action, Next action date). Notion may return a Sender domain as a Markdown link like `[example.com](http://example.com)`; use the plain domain.
 - Runs: the newest row with Result = OK and Mode = Live (sort Started descending, limit 1). None means this is the first run.
 - Email Log: rows with Received on or after the start date. Collect their Message IDs.
 
@@ -39,7 +39,7 @@ A message is job-related if it comes from a hiring-system sender or a row's Send
 1. The sender's domain is in a row's Sender domains: that row.
 2. Otherwise the sender domain, subject or body names a Company in Job Applications: that company's rows. For hiring-system senders, read the body with `get_thread` (messageFormat PLAIN_TEXT) to find the company and role.
 3. Several rows for that company: pick by the Role named in the subject or body. Still unclear: Needs a look.
-4. Hiring-system sender and no company named (Indeed confirmations often name only the role): take the job title from the subject. If exactly one row whose Status is not Rejected or Withdrawn has a Role contained in that title (ignoring case), match that row and mark it "matched by role" in the summary. Two or more such rows, or none: Needs a look.
+4. Hiring-system sender and no company named (Indeed confirmations often name only the role): take the job title from the subject. If exactly one row whose Status is not Rejected or Withdrawn has a non-empty Role contained in that title (ignoring case), match that row and mark it "matched by role" in the summary. Two or more such rows, or none: Needs a look.
 5. No company match: Needs a look. Never guess or invent a company.
 
 Read a body with `get_thread` only when the subject and snippet are not enough to match or sort, or when a date or time is needed (interview, assessment due date, deadline).
