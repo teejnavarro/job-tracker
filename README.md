@@ -20,7 +20,9 @@ Full brief: `docs/BRIEF.md`.
 - [x] JT-003 /tailor adds the Notion row (Resume Tailor PR #11); TRACKER.md is a local pointer
 - [x] JT-004 `rules/email-rules.md` (search words, hiring senders, ignore list, sorting words, search recipe)
 - [x] JT-005 `/jobmail` dry run (project command + Foundry wrapper); real dry runs write nothing
-- [ ] `/architect Work on JT-006`
+- [x] JT-006 `/jobmail live` (Notion rows, Email Log, Runs, Jobs labels; reads via `jobmail:` views)
+- [ ] Owner: untick Needs a look on MicroSourcing Data Analyst after checking
+- [ ] `/architect Work on JT-007`
 
 ## Links
 - Brief: `docs/BRIEF.md`
@@ -34,3 +36,4 @@ Full brief: `docs/BRIEF.md`.
 - 2026-10-19 - JT-003 done: Resume Tailor PR #11 merged (bce1d39). /tailor adds/updates the Notion row (never changes Status on an existing row); TRACKER.md retired to a local pointer.
 - 2026-10-20 - JT-004 done: `rules/email-rules.md` added (search words split from sorting words; company domains stay in Notion); QA passed incl. a read-only 7-day Gmail check; merged to main locally (e2c9e4d).
 - 2026-10-20 - JT-005 done: `/jobmail` dry run (match by domain, company, or role for hiring-system emails; status only moves forward); QA + re-run passed; HelloConnect row merged into HelloFresh; merged to main locally.
+- 2026-10-20 - JT-006 done: `/jobmail live` with owner-approved first live run (5 emails recorded, 3 Jobs labels on 5 threads) and a duplicate-free second run; Notion reads moved to saved views after the rows-mode allowance ran out; merged to main locally.
