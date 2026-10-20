@@ -51,6 +51,7 @@ Put phrases with spaces in "double quotes". Lowercase is fine; matching ignores 
 - "received your application"
 - "application was sent"
 - "application submitted"
+- "has been submitted"
 - "under review"
 ### Recruiter question
 - availability

@@ -32,6 +32,8 @@ For every message in every returned thread, skip it if:
 
 ## Step 4: Job-related or not
 
+Keywords and phrases from the rules file match as whole words or whole phrases, ignoring case ("hr" does not match inside "through").
+
 A message is job-related if it comes from a hiring-system sender or a row's Sender domain, or it names an active Company, or its subject or snippet contains a Search word together with at least one Sorting word or Signal. Anything else goes to **Skipped, not job-related** (record sender address and date only). Ignore-list senders and phrases that still appear are skipped too.
 
 ## Step 5: Match to an application (job-related messages only)
@@ -66,7 +68,9 @@ For every message: Last contact = email date; label `Jobs/<Company>`; an Email L
 Rules:
 - Status only moves forward: Drafting, Applied, Assessment, Interview, Offer. Never propose a backward move; just log the email.
 - Rows that are Withdrawn or Rejected never change status: list the email under Needs a look and name the row.
-- If a message was matched by company name, its sender domain is not a hiring-system sender, and the domain is not already in Sender domains, propose adding that domain to the row.
+- Confirmation on a row that is already Applied or further: keep its Applied date. Propose the 7-day follow-up only if no follow-up is pending for that row yet.
+- An empty Role is left out of event titles: "[Job] Follow up: <Company>".
+- If a message was matched (not Needs a look) by company name, its sender domain is not a hiring-system sender, and the domain is not already in Sender domains, propose adding that domain to the row.
 - Needs a look messages: label `Jobs/Needs a look`, no status change, no event.
 - If several messages hit the same row, apply them oldest first and show the final proposed status.
 
