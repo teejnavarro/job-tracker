@@ -22,7 +22,8 @@ Full brief: `docs/BRIEF.md`.
 - [x] JT-005 `/jobmail` dry run (project command + Foundry wrapper); real dry runs write nothing
 - [x] JT-006 `/jobmail live` (Notion rows, Email Log, Runs, Jobs labels; reads via `jobmail:` views)
 - [ ] Owner: untick Needs a look on MicroSourcing Data Analyst after checking
-- [ ] `/architect Work on JT-007`
+- [x] JT-007 calendar reminders (email-driven events + 7-day nudges + deadline reminders; own nudges deleted when a reply arrives)
+- [ ] `/architect Work on JT-008` (private repo for the cloud routine)
 
 ## Links
 - Brief: `docs/BRIEF.md`
@@ -37,3 +38,4 @@ Full brief: `docs/BRIEF.md`.
 - 2026-10-20 - JT-004 done: `rules/email-rules.md` added (search words split from sorting words; company domains stay in Notion); QA passed incl. a read-only 7-day Gmail check; merged to main locally (e2c9e4d).
 - 2026-10-20 - JT-005 done: `/jobmail` dry run (match by domain, company, or role for hiring-system emails; status only moves forward); QA + re-run passed; HelloConnect row merged into HelloFresh; merged to main locally.
 - 2026-10-20 - JT-006 done: `/jobmail live` with owner-approved first live run (5 emails recorded, 3 Jobs labels on 5 threads) and a duplicate-free second run; Notion reads moved to saved views after the rows-mode allowance ran out; merged to main locally.
+- 2026-10-20 - JT-007 done: `/jobmail` creates `[Job]` calendar reminders (primary calendar, Manila time); first live run made 3 follow-up nudges (HelloFresh 20 Oct, Svenbjorn and MicroSourcing MAS 26 Oct), second run made none; merged to main locally.
