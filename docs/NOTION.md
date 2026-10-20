@@ -81,6 +81,16 @@ One row per inbox check. Gives the next run its start time and shows cloud runs 
 
 - Last successful run = the newest Runs row with Result OK and Mode Live. Dry runs never move the window.
 - Dedupe keys: Link for Job Applications, Message ID for Email Log.
-- Query with rows mode and structured filters, not SQL (SQL query mode is capped on this plan).
+- Reads use view mode only (`notion-query-data-sources` with `mode: view` and a view URL below). Rows mode and SQL mode share a capped allowance on this plan and ran out on 2026-10-20; view mode is not capped. Writes (create and update pages) are not affected.
 - Never store email bodies. Subject, sender, IDs and dates only.
 - Date-time values need `date:<property>:is_datetime` set to 1 when writing rows.
+
+## Views for /jobmail
+
+Used by `/jobmail` for every read (view mode). Names start with `jobmail:`; don't edit their filters or sorts.
+
+| Database | View | Setup | View URL for view mode |
+|---|---|---|---|
+| Job Applications | jobmail: all rows | Table, no filter | https://app.notion.com/p/0b62afe9bd09443ab393edea5521c341?v=3ff43162036c81e2b8c2000cdb397bac |
+| Runs | jobmail: last good live run | Result = OK and Mode = Live, Started newest first | https://app.notion.com/p/46f4368683ad45ff9d8afc695c836dab?v=3ff43162036c81a1a343000c3634e8d1 |
+| Email Log | jobmail: newest first | Received newest first | https://app.notion.com/p/55175910ef2d4c36a1b67bb756681e77?v=3ff43162036c817a9d28000c42e54c0e |
