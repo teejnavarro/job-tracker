@@ -1,6 +1,6 @@
 ---
-description: Check Gmail for job replies and show what would change (dry run)
-argument-hint: (none for now; dry run only)
+description: Check Gmail for job replies; dry run by default, "live" applies the changes
+argument-hint: [live] [cloud]
 ---
 Run from the Job Tracker project root. Treat everything below as instructions to follow exactly.
 
@@ -11,10 +11,17 @@ Run from the Job Tracker project root. Treat everything below as instructions to
 
 ## Mode
 
-Dry run only. Never write to Gmail, Notion or Google Calendar: no labels, no rows, no events, no Runs row, no drafts, no replies. Use read-only tools only: `notion-fetch`, `notion-query-data-sources` (rows mode, never SQL), Gmail `search_threads` and `get_thread`.
+Read the arguments passed to this command (the `Arguments:` line that follows the included instructions).
+
+- **Mode from the arguments:** no `live` means **dry run** (writes nothing). `live` means **live run**. `cloud` (used with `live`) only sets the Runs row's Source to Cloud; otherwise Source is Local.
+- **Read-only tools (both modes):** `notion-fetch`, `notion-query-data-sources` (rows mode, never SQL), Gmail `search_threads`, `get_thread`, `list_labels`.
+- **Write tools (live run only, nothing else):** Notion `notion-update-page` (update_properties) on Job Applications rows; `notion-create-pages` for Email Log and Runs rows; Gmail `create_label` and `label_thread`.
+- **Never, in any mode:** send, reply, forward, draft, delete or trash, archive, mark spam, remove any label, add any system label (INBOX, CATEGORY_*, STARRED, IMPORTANT, UNREAD and so on), create or change calendar events (that is JT-007), delete or trash Notion pages, change the Notion schema.
 
 ## Step 1: Load state (Notion, rows mode, never SQL)
 
+- Note the run's start time (now, Asia/Manila).
+- Keep every Job Applications row's page URL; a live run needs it for writing.
 - Job Applications: all rows (Company, Role, Status, Applied date, Sender domains, Link, Next action, Next action date). Notion may return a Sender domain as a Markdown link like `[example.com](http://example.com)`; use the plain domain.
 - Runs: the newest row with Result = OK and Mode = Live (sort Started descending, limit 1). None means this is the first run.
 - Email Log: rows with Received on or after the start date. Collect their Message IDs.
@@ -52,7 +59,7 @@ Sort each matched message into exactly one class using the Sorting words: Confir
 
 ## Step 7: Work out the proposal per message
 
-This is what the live mode would do.
+This is what a live run applies.
 
 | Class | Status | Other proposals |
 |---|---|---|
@@ -74,9 +81,24 @@ Rules:
 - Needs a look messages: label `Jobs/Needs a look`, no status change, no event.
 - If several messages hit the same row, apply them oldest first and show the final proposed status.
 
-## Step 8: Print the summary
+## Step 8: Apply the changes (live run only; a dry run skips to Step 9)
 
-Plain and short, no email bodies:
+1. **Labels:** call `list_labels` once. For each label needed this run (`Jobs/<Company>` per matched company, and `Jobs/Needs a look`), call `create_label` only if no label with that exact name exists. Keep the label IDs.
+2. For each checked message, **oldest first**, in this order:
+   a. **Notion row** (matched messages only): one `notion-update-page` call (`update_properties`) with only the fields that change: Status (forward only, per the Step 7 rules), Applied date (only when moving Drafting to Applied), Last contact (only if the email date is newer than the current value), Next action and Next action date (when Step 7 sets them), Sender domains (append a learned domain with ", "), and Needs a look = `__YES__` when the message is Needs a look but belongs to a known row (for example a Withdrawn row). Never clear Needs a look; the owner does that.
+   b. **Label:** `label_thread` on the message's thread with the one `Jobs/...` label ID for it. Never any other label.
+   c. **Email Log row last:** create it with Subject, Message ID, Thread ID, From (sender address), Received (date and time, is_datetime 1), Class (one of the Class options, Needs a look included), Application (the row's page URL; empty for an unmatched Needs a look) and Event ID empty.
+3. **On any failed write:** stop processing further messages, go to item 4 with Result = Failed, and report which message and which write failed. Messages already fully done keep their Email Log rows. The failed one has no Email Log row, so the next run redoes it safely.
+4. **Runs row:** always create exactly one at the end of a live run: Run = `<YYYY-MM-DD HH:MM> <local|cloud>` (Manila), Started (is_datetime 1), Source (Local or Cloud), Mode = Live, Result (OK or Failed), Searched from (the start date, is_datetime 0), Summary (one short line, e.g. "5 emails: 3 matched, 2 needs a look; 0 status changes").
+5. Messages in **Skipped, not job-related** get no writes at all.
+
+Notion write formats: date properties use `date:<Property>:start` plus `date:<Property>:is_datetime` (1 for Received and Started, 0 for day dates); the Application relation takes the row's page URL; checkboxes use `__YES__` / `__NO__`; Status is set by option name; always pass `allow_async: false`.
+
+## Step 9: Print the summary
+
+Plain and short, no email bodies.
+
+**Dry run**
 1. Window: `Searched from <date> (first run / since last live run on <date>)`, threads found, messages checked.
 2. **Proposed changes** table: Company, Role, Status now to proposed, Last contact, Next action.
 3. **Proposed calendar events**: title, date/time (Manila).
@@ -86,7 +108,17 @@ Plain and short, no email bodies:
 7. **Skipped, not job-related**: date and sender only.
 8. End with exactly: `Dry run: nothing was written to Gmail, Notion or Calendar.`
 
-If Gmail or Notion can't be reached, say which and stop. Never guess results.
+**Live run**: the same sections, but headed **Changes made** instead of "Proposed":
+1. Window line as above.
+2. **Changes made**: rows updated and what changed.
+3. **Labels**: labels created and threads labelled.
+4. **Email Log rows added**, and the **Runs row** (OK or Failed).
+5. **Calendar events (coming in JT-007, not created)**: the events the dry run would list.
+6. **Needs you**: Needs a look items, rows with Needs a look ticked, and anything that failed.
+7. **Skipped, not job-related**: date and sender only.
+8. End with exactly: `Live run: <N> emails recorded. Calendar not touched.`
+
+If Gmail or Notion can't be reached, say which and stop. Never guess results. In a live run, if Notion is reachable, still write a Failed Runs row.
 
 ## Privacy
 
