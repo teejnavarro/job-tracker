@@ -114,7 +114,8 @@ Put phrases with spaces in "double quotes". Lowercase is fine; matching ignores 
 1. **Start date:** the day before the Started date of the last successful live run (the newest Runs row with Result OK and Mode Live), or 30 days ago on the first run. Write it as `after:YYYY/MM/DD`.
 2. **Senders:** every Hiring-system sender, plus every domain in the "Sender domains" field of Job Applications rows whose Status is not Rejected or Withdrawn. Also the **Company** name of each of those rows.
 3. **Build:**
-   `after:<start> -in:sent -in:drafts -category:<each Gmail tab> ( from:(<senders joined with OR>) OR subject:(<Search words joined with OR>) OR <each active Company in "double quotes", joined with OR> ) -from:(<Ignore senders joined with OR>) -subject:(<Ignore subject phrases joined with OR>)`
+   `after:<start> -in:sent -in:drafts -category:<each tab listed under Ignore > Gmail tabs> ( from:(<senders joined with OR>) OR subject:(<Search words joined with OR>) OR <each active Company in "double quotes", joined with OR> ) -from:(<Ignore senders joined with OR>) -subject:(<Ignore subject phrases joined with OR>)`
+   Only the tabs listed under Ignore > Gmail tabs are excluded (today just `-category:promotions`). Never exclude Primary, Updates, Social or Forums: hiring-system emails such as Indeed confirmations land in Updates.
 4. **Too long?** If the search is over about 1,400 characters, run two searches instead (one with only the `from:` part and the Company names, one with only the `subject:` part, both with the date and ignore parts) and merge the results by thread.
 5. **Already handled:** skip any message whose ID is already in the Email Log (Message ID).
 6. **Sorting:** read each remaining email. Match it to an application by sender domain, then by company name. Pick the category whose Sorting words fit best. If no application matches, or the category is unclear, it goes to "Needs a look". Never guess.
