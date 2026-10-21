@@ -27,7 +27,7 @@ It holds three inline databases: Job Applications, Email Log, Runs.
 | Last contact | date | |
 | Next action | text | |
 | Next action date | date | |
-| Sender domains | text | Comma-separated, e.g. `microsourcing.com, myworkdayjobs.com` |
+| Sender domains | text | Comma-separated, e.g. `example.com, myworkdayjobs.com` |
 | Local folder | text | Folder name under resume-tailor `applications/` |
 | Needs a look | checkbox | |
 | Reminder event IDs | text | Calendar event IDs for the 7-day nudge and deadline reminder |
