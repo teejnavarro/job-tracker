@@ -18,7 +18,7 @@
 - Read Gmail; add labels `Jobs/<Company>` and `Jobs/Needs a look`
 - Classify replies: confirmation, recruiter question, interview, assessment, offer, rejection
 - Update Notion status, last-contact date, next action + date
-- Google Calendar events (Asia/Manila) on `teejnavarro@gmail.com`, titled "[Job] ...":
+- Google Calendar events (Asia/Manila) on the owner's main calendar, titled "[Job] ...":
   - interviews at the stated time
   - same-day reply reminders (due within 24 hours) when a recruiter emails
   - next-day follow-up after an interview
@@ -61,7 +61,7 @@
 
 ## Assumptions
 - Project folder `10-Active/2026-10_job-tracker`; the /tailor change is a small PR to the archived resume-tailor repo (github.com/teejnavarro/resume-tailor)
-- Events go on the owner's main Google Calendar (`teejnavarro@gmail.com`). That calendar is set to UTC, so every event sets Asia/Manila explicitly
+- Events go on the owner's main Google Calendar. That calendar is set to UTC, so every event sets Asia/Manila explicitly
 - Gmail checks look back to the last successful run (first run: last 30 days)
 
 ## Starting keyword / sender list (from the approval chat)
