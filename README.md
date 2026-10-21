@@ -23,7 +23,8 @@ Full brief: `docs/BRIEF.md`.
 - [x] JT-006 `/jobmail live` (Notion rows, Email Log, Runs, Jobs labels; reads via `jobmail:` views)
 - [ ] Owner: untick Needs a look on the withdrawn row that has it ticked after checking
 - [x] JT-007 calendar reminders (email-driven events + 7-day nudges + deadline reminders; own nudges deleted when a reply arrives)
-- [ ] `/architect Work on JT-008` (private repo for the cloud routine)
+- [x] JT-008 private GitHub repo `job-tracker` (this repo; email and company names removed from tracked files)
+- [ ] `/architect Work on JT-009` (cloud routine)
 
 ## Links
 - Brief: `docs/BRIEF.md`
@@ -40,3 +41,4 @@ Full brief: `docs/BRIEF.md`.
 - 2026-10-20 - JT-005 done: `/jobmail` dry run (match by domain, company, or role for hiring-system emails; status only moves forward); QA + re-run passed; a duplicate row merged; merged to main locally.
 - 2026-10-20 - JT-006 done: `/jobmail live` with owner-approved first live run (5 emails recorded, 3 Jobs labels on 5 threads) and a duplicate-free second run; Notion reads moved to saved views after the rows-mode allowance ran out; merged to main locally.
 - 2026-10-20 - JT-007 done: `/jobmail` creates `[Job]` calendar reminders (primary calendar, Manila time); first live run made 3 follow-up nudges (20 Oct, 26 Oct, 26 Oct), second run made none; merged to main locally.
+- 2026-10-21 - JT-008 done: this repo pushed as the private GitHub repo job-tracker (main only, 03d4de7) after a light clean-up of personal details in tracked files.
