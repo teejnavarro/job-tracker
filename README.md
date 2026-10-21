@@ -24,10 +24,11 @@ Full brief: `docs/BRIEF.md`.
 - [ ] Owner: untick Needs a look on the withdrawn row that has it ticked after checking
 - [x] JT-007 calendar reminders (email-driven events + 7-day nudges + deadline reminders; own nudges deleted when a reply arrives)
 - [x] JT-008 private GitHub repo `job-tracker` (this repo; email and company names removed from tracked files)
-- [ ] `/architect Work on JT-009` (cloud routine)
+- [ ] JT-009 cloud routine (see docs/ROUTINE.md)
 
 ## Links
 - Brief: `docs/BRIEF.md`
+- Routine: docs/ROUTINE.md
 - Repo: github.com/teejnavarro/job-tracker (private). Push main after each change, with the owner's OK.
 - Related: `10-Active/2026-10_resume-tailor` (/tailor, current TRACKER.md)
 
