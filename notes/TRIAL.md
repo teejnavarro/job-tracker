@@ -8,7 +8,7 @@ Status as of 2026-10-23.
 
 | Criterion | Status | Evidence |
 |---|---|---|
-| Dry run on the real inbox reviewed with the owner; misclassifications fixed in the keyword list | Met | Dry runs on 2026-10-20 and 2026-10-21 were reviewed with the owner. Fixes below (JT-004 QA, JT-005, JT-009). |
+| Dry run on the real inbox reviewed with the owner; misclassifications fixed in the keyword list | Met | Dry runs on 2026-10-20 and the live cloud test runs on 2026-10-21 were reviewed with the owner. Fixes below (JT-004 QA, JT-005, JT-009). |
 | Write run: a real recruiter email becomes the right Notion status and calendar event with no manual steps | Waiting | No recruiter, interview, assessment, offer or rejection email for an active row has arrived yet. The paths are built but not seen live. |
 | An unsure email lands in Needs a look | Met | 2026-10-19: interview invites for a withdrawn application. 2026-10-21: an Indeed "job was closed" email for an applied row (no sorting word fits). Both went to Needs a look. |
 | A second run straight after creates no duplicates | Met | JT-006 live run 2 made 0 changes. JT-007 live run 2 made 0 events. JT-009: two overlapping cloud runs, the second saw the email already logged. Daily cloud runs since have made no duplicates. |
