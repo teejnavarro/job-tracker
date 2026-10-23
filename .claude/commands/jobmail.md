@@ -22,7 +22,7 @@ Read the arguments passed to this command (the `Arguments:` line that follows th
 
 Read Notion only with `notion-query-data-sources` in mode `view`, using the view URLs in `docs/NOTION.md` (page_size 100; if `has_more` is true, pass `next_cursor` as `start_cursor`).
 
-- Note the run's start time (now, Asia/Manila).
+- Get the run's start time by running `date -u +%Y-%m-%dT%H:%M:%SZ` in the shell, then convert it to Asia/Manila (UTC+8). Never guess or estimate the time; use this value for the Runs row's title and Started.
 - Job Applications: every row from the `jobmail: all rows` view (Company, Role, Status, Applied date, Last contact, Sender domains, Link, Next action, Next action date, Needs a look). Keep each row's page URL; a live run needs it for writing. Notion may return a Sender domain as a Markdown link like `[example.com](http://example.com)`; use the plain domain.
 - Runs: the first row of the `jobmail: last good live run` view (it is already filtered to Result OK and Mode Live, newest first). No row means this is the first run.
 - Email Log: read the `jobmail: newest first` view and stop once Received is before the start date. Collect the Message IDs.
@@ -108,7 +108,7 @@ Rules:
    3. Deadline is set, not before today, and Reminder event IDs has no `deadline:` entry: create "[Job] Deadline: <Company> <Role>" all-day on Deadline - 2 days (today if past); store `deadline:<id>`.
    Store each ID with a `notion-update-page` (`update_properties`) call on Reminder event IDs right after its event is created, joining entries with "; ".
 3. **On any failed write:** stop processing further messages, go to item 4 with Result = Failed, and report which message and which write failed. Messages already fully done keep their Email Log rows. The failed one has no Email Log row, so the next run redoes it safely. An event created but not yet stored is caught next run by the title search.
-4. **Runs row:** always create exactly one at the end of a live run: Run = `<YYYY-MM-DD HH:MM> <local|cloud>` (Manila), Started (is_datetime 1), Source (Local or Cloud), Mode = Live, Result (OK or Failed), Searched from (the start date, is_datetime 0), Summary (one short line, e.g. "5 emails: 3 matched, 2 needs a look; 0 status changes; 2 events created, 0 removed").
+4. **Runs row:** always create exactly one at the end of a live run: Run = `<YYYY-MM-DD HH:MM> <local|cloud>` (Manila), Started (the start time from Step 1, is_datetime 1), Source (Local or Cloud), Mode = Live, Result (OK or Failed), Searched from (the start date, is_datetime 0), Summary (one short line, e.g. "5 emails: 3 matched, 2 needs a look; 0 status changes; 2 events created, 0 removed").
 5. Messages in **Skipped, not job-related** get no writes at all.
 
 Notion write formats: date properties use `date:<Property>:start` plus `date:<Property>:is_datetime` (1 for Received and Started, 0 for day dates); the Application relation takes the row's page URL; checkboxes use `__YES__` / `__NO__`; Status is set by option name; always pass `allow_async: false`.
