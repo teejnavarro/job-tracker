@@ -25,7 +25,7 @@ Full brief: `docs/BRIEF.md`.
 - [x] JT-007 calendar reminders (email-driven events + 7-day nudges + deadline reminders; own nudges deleted when a reply arrives)
 - [x] JT-008 private GitHub repo `job-tracker` (this repo; email and company names removed from tracked files)
 - [x] JT-009 cloud routine runs 08:07 + 17:07 Manila (see docs/ROUTINE.md)
-- [ ] `/architect Work on JT-010` (live inbox trial)
+- [ ] JT-010 waiting for a real recruiter email (see notes/TRIAL.md)
 
 ## Links
 - Brief: `docs/BRIEF.md`
