@@ -26,7 +26,7 @@ Full brief: `docs/BRIEF.md`.
 - [x] JT-008 private GitHub repo `job-tracker` (this repo; email and company names removed from tracked files)
 - [x] JT-009 cloud routine runs 08:07 + 17:07 Manila (see docs/ROUTINE.md)
 - [ ] JT-010 waiting for a real recruiter email (see notes/TRIAL.md)
-- [ ] JT-011 /jobadd (see .claude/commands/jobadd.md)
+- [x] JT-011 /jobadd (see .claude/commands/jobadd.md)
 
 ## Links
 - Brief: `docs/BRIEF.md`
@@ -47,3 +47,4 @@ Full brief: `docs/BRIEF.md`.
 - 2026-10-20 - JT-007 done: `/jobmail` creates `[Job]` calendar reminders (primary calendar, Manila time); first live run made 3 follow-up nudges (20 Oct, 26 Oct, 26 Oct), second run made none; merged to main locally.
 - 2026-10-21 - JT-008 done: this repo pushed as the private GitHub repo job-tracker (main only, 03d4de7) after a light clean-up of personal details in tracked files.
 - 2026-10-23 - JT-009 done: cloud scheduled task "Job Tracker inbox check" runs `/jobmail live cloud` at 08:07 and 17:07 Manila (Gmail, Notion, Calendar only); test runs passed after a Gmail-tab fix; scheduled runs succeeded with the PC off.
+- 2026-10-26 - JT-011 done: `/jobadd <link>` adds a Notion row for jobs applied without /tailor (reads the posting, dedupes by job ID, asks Drafting/Applied); real LinkedIn test passed, second run said "Already in Notion".
