@@ -23,6 +23,7 @@ Run the Job Tracker inbox check. Follow .claude/commands/jobmail.md in this repo
 Read rules/email-rules.md and docs/NOTION.md as that file says.
 Do not change, commit or push any files in this repository, and do not open pull requests.
 If a Gmail, Notion or Google Calendar tool is missing, stop, say which, and still write a Failed Runs row if Notion works.
+If anything needs the owner (a Needs a look item, an interview, assessment, offer, rejection or recruiter question), send one short phone notification saying what it is. Send none when nothing new needs them.
 End with the command's live-run summary.
 ```
 
