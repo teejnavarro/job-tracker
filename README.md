@@ -26,10 +26,12 @@ Full brief: `docs/BRIEF.md`.
 - [x] JT-008 private GitHub repo `job-tracker` (this repo; email and company names removed from tracked files)
 - [x] JT-009 cloud routine runs 08:07 + 17:07 Manila (see docs/ROUTINE.md)
 - [ ] JT-010 waiting for a real recruiter email (see notes/TRIAL.md)
+- [ ] JT-011 /jobadd (see .claude/commands/jobadd.md)
 
 ## Links
 - Brief: `docs/BRIEF.md`
 - Routine: docs/ROUTINE.md
+- Add a job: /jobadd <link>
 - Repo: github.com/teejnavarro/job-tracker (private). Push main after each change, with the owner's OK.
 - Related: `10-Active/2026-10_resume-tailor` (/tailor, current TRACKER.md)
 
