@@ -130,7 +130,7 @@ Plain and short, no email bodies.
 
 **Live run**: the same sections, but headed **Changes made** instead of "Proposed":
 1. Window line as above.
-2. **Changes made**: rows updated and what changed.
+2. **Changes made**: rows updated and what changed. List every entry of the Step 8 status-change list (Company, old to new) plus other row updates. The number of status changes here, in the Runs row Summary and in any notification is the same.
 3. **Labels**: labels created and threads labelled.
 4. **Email Log rows added**, and the **Runs row** (OK or Failed).
 5. **Calendar**: events created (title, date/time), nudges removed, and any skipped as already existing.
