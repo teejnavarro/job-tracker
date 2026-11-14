@@ -25,7 +25,7 @@ Full brief: `docs/BRIEF.md`.
 - [x] JT-007 calendar reminders (email-driven events + 7-day nudges + deadline reminders; own nudges deleted when a reply arrives)
 - [x] JT-008 private GitHub repo `job-tracker` (this repo; email and company names removed from tracked files)
 - [x] JT-009 cloud routine runs 08:07 + 17:07 Manila (see docs/ROUTINE.md)
-- [ ] JT-010 waiting for a real recruiter email (see notes/TRIAL.md)
+- [x] JT-010 live inbox trial passed on a real rejection email (see notes/TRIAL.md)
 - [x] JT-011 /jobadd (see .claude/commands/jobadd.md)
 
 ## Links
@@ -48,3 +48,7 @@ Full brief: `docs/BRIEF.md`.
 - 2026-10-21 - JT-008 done: this repo pushed as the private GitHub repo job-tracker (main only, 03d4de7) after a light clean-up of personal details in tracked files.
 - 2026-10-23 - JT-009 done: cloud scheduled task "Job Tracker inbox check" runs `/jobmail live cloud` at 08:07 and 17:07 Manila (Gmail, Notion, Calendar only); test runs passed after a Gmail-tab fix; scheduled runs succeeded with the PC off.
 - 2026-10-26 - JT-011 done: `/jobadd <link>` adds a Notion row for jobs applied without /tailor (reads the posting, dedupes by job ID, asks Drafting/Applied); real LinkedIn test passed, second run said "Already in Notion".
+- 2026-11-14 - JT-010 done: checked Notion Email Log and Runs against notes/TRIAL.md. A real rejection email (2026-11-06) moved its row to Rejected and removed the nudge with no manual steps; two interview emails each got a "Confirm interview time" event. Not seen live: a timed interview event, and proof that the run (not the owner) moved the interview row. Backlog 11/11.
+- 2026-11-14 - /review-brief verdict: Needs work (docs/REVIEW.md). 4 of 5 criteria met. Open: whether the run or the owner moved the interview row (run summaries say 0 status changes), no single email has done both a status change and a new event, first recruiter email went to Needs a look, two owner steps in Notion, brief still says 08:00 and 17:00. Nothing fixed; owner to decide.
+- 2026-11-14 - Owner confirmed the run (not the owner) moved the interview row to Interview. Recorded in notes/TRIAL.md. Known issue: the run summary undercounts status changes.
+- 2026-11-14 - /review-brief re-run: still Needs work, one blocking item. All five success criteria met. Blocking: the run summary undercounts status changes (fix it, or owner accepts it as a known limit). Other open items are in docs/REVIEW.md. Nothing fixed.

@@ -98,7 +98,7 @@ Rules:
 
 1. **Labels:** call `list_labels` once. For each label needed this run (`Jobs/<Company>` per matched company, and `Jobs/Needs a look`), call `create_label` only if no label with that exact name exists. Keep the label IDs.
 2. For each checked message, **oldest first**, in this order:
-   a. **Notion row** (matched messages only): one `notion-update-page` call (`update_properties`) with only the fields that change: Status (forward only, per the Step 7 rules), Applied date (only when moving Drafting to Applied), Last contact (only if the email date is newer than the current value), Next action and Next action date (when Step 7 sets them), Sender domains (append a learned domain with ", "), and Needs a look = `__YES__` when the message is Needs a look but belongs to a known row (for example a Withdrawn row). Never clear Needs a look; the owner does that.
+   a. **Notion row** (matched messages only): one `notion-update-page` call (`update_properties`) with only the fields that change: Status (forward only, per the Step 7 rules), Applied date (only when moving Drafting to Applied), Last contact (only if the email date is newer than the current value), Next action and Next action date (when Step 7 sets them), Sender domains (append a learned domain with ", "), and Needs a look = `__YES__` when the message is Needs a look but belongs to a known row (for example a Withdrawn row). Never clear Needs a look; the owner does that. Keep a running list of every row whose Status this call changed (Company, old status, new status); the Runs row Summary and Step 9 are built from this list.
    b. **Label:** `label_thread` on the message's thread with the one `Jobs/...` label ID for it. Never any other label.
    b2. **Calendar:** create the message's events (if any) per Step 7 and the Calendar rules. If the class drops a nudge and the row has `nudge:<id>`, call `delete_event` on that ID and set the row's entry to `nudge:dropped` with one `notion-update-page` (`update_properties`) on Reminder event IDs.
    c. **Email Log row last:** create it with Subject, Message ID, Thread ID, From (sender address), Received (date and time, is_datetime 1), Class (one of the Class options, Needs a look included), Application (the row's page URL; empty for an unmatched Needs a look) and Event ID (the new event ID(s) from b2, comma-separated; empty if none).
@@ -108,7 +108,7 @@ Rules:
    3. Deadline is set, not before today, and Reminder event IDs has no `deadline:` entry: create "[Job] Deadline: <Company> <Role>" all-day on Deadline - 2 days (today if past); store `deadline:<id>`.
    Store each ID with a `notion-update-page` (`update_properties`) call on Reminder event IDs right after its event is created, joining entries with "; ".
 3. **On any failed write:** stop processing further messages, go to item 4 with Result = Failed, and report which message and which write failed. Messages already fully done keep their Email Log rows. The failed one has no Email Log row, so the next run redoes it safely. An event created but not yet stored is caught next run by the title search.
-4. **Runs row:** always create exactly one at the end of a live run: Run = `<YYYY-MM-DD HH:MM> <local|cloud>` (Manila), Started (the start time from Step 1, is_datetime 1), Source (Local or Cloud), Mode = Live, Result (OK or Failed), Searched from (the start date, is_datetime 0), Summary (one short line, e.g. "5 emails: 3 matched, 2 needs a look; 0 status changes; 2 events created, 0 removed").
+4. **Runs row:** always create exactly one at the end of a live run: Run = `<YYYY-MM-DD HH:MM> <local|cloud>` (Manila), Started (the start time from Step 1, is_datetime 1), Source (Local or Cloud), Mode = Live, Result (OK or Failed), Searched from (the start date, is_datetime 0), Summary (one short line, built from what this run did, never copied from an example): `<N> emails: <M> matched, <L> needs a look; <S> status change(s) (<Company>: <old> to <new>, ...); <E> events created, <D> removed`. `<S>` is the length of the status-change list from item 2a, and each entry is named in the brackets; write `0 status changes` only when that list is empty. `<E>` and `<D>` are the calendar creates and deletes this run made (messages and reminders pass).
 5. Messages in **Skipped, not job-related** get no writes at all.
 
 Notion write formats: date properties use `date:<Property>:start` plus `date:<Property>:is_datetime` (1 for Received and Started, 0 for day dates); the Application relation takes the row's page URL; checkboxes use `__YES__` / `__NO__`; Status is set by option name; always pass `allow_async: false`.
@@ -130,7 +130,7 @@ Plain and short, no email bodies.
 
 **Live run**: the same sections, but headed **Changes made** instead of "Proposed":
 1. Window line as above.
-2. **Changes made**: rows updated and what changed.
+2. **Changes made**: rows updated and what changed. List every entry of the Step 8 status-change list (Company, old to new) plus other row updates. The number of status changes here, in the Runs row Summary and in any notification is the same.
 3. **Labels**: labels created and threads labelled.
 4. **Email Log rows added**, and the **Runs row** (OK or Failed).
 5. **Calendar**: events created (title, date/time), nudges removed, and any skipped as already existing.
