@@ -41,7 +41,7 @@ Interview emails from a recruiter, received 2026-11-04 11:05 and 2026-11-05 11:2
 - The row's nudge was deleted on 2026-11-04 and the row shows `nudge:dropped`.
 - The runs after each (`2026-11-05 08:07`, `2026-11-06 08:09`) made no new changes.
 
-Owner statement (2026-11-14): the run moved the interview row to Interview; the owner did not move it by hand. So the 2026-11-04 interview email changed the status, created an event and dropped the nudge in one run. The run summary still said "0 status changes", so the summary line undercounts status changes (also seen on the 2026-10-26 rejection). Reported, not fixed.
+Owner statement (2026-11-14): the run moved the interview row to Interview; the owner did not move it by hand. So the 2026-11-04 interview email changed the status, created an event and dropped the nudge in one run. The run summary still said "0 status changes", so the summary line undercounts status changes (also seen on the 2026-10-26 rejection). Fixed in JT-012 (PR #1, 2026-11-14); the fix has not been seen on a live status change yet.
 
 Not seen live:
 - A timed interview event with a next-day follow-up has not been seen. The first email proposed "today at 5PM" and was handled by the 17:07 run, after that time. The second carried its time only in a calendar attachment, which `/jobmail` does not read.
@@ -49,4 +49,4 @@ Not seen live:
 - The recruiter's first email (2026-11-03, asking for availability) went to Needs a look, not Recruiter question.
 
 ## Closing
-The open check passed on the rejection email. JT-010 marked done on 2026-11-14. The summary undercount and the items under "Not seen live" are reported to the owner, not fixed.
+The open check passed on the rejection email. JT-010 marked done on 2026-11-14. The summary undercount was fixed in JT-012. The items under "Not seen live" are reported to the owner, not fixed.

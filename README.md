@@ -1,6 +1,6 @@
 # Job Tracker
 
-**Status:** Active
+**Status:** Live
 **Started:** 2026-10-19
 
 ## Goal
@@ -27,6 +27,7 @@ Full brief: `docs/BRIEF.md`.
 - [x] JT-009 cloud routine runs 08:07 + 17:07 Manila (see docs/ROUTINE.md)
 - [x] JT-010 live inbox trial passed on a real rejection email (see notes/TRIAL.md)
 - [x] JT-011 /jobadd (see .claude/commands/jobadd.md)
+- [x] JT-012 run summary counts status changes from the writes made (PR #1)
 
 ## Links
 - Brief: `docs/BRIEF.md`
@@ -52,3 +53,6 @@ Full brief: `docs/BRIEF.md`.
 - 2026-11-14 - /review-brief verdict: Needs work (docs/REVIEW.md). 4 of 5 criteria met. Open: whether the run or the owner moved the interview row (run summaries say 0 status changes), no single email has done both a status change and a new event, first recruiter email went to Needs a look, two owner steps in Notion, brief still says 08:00 and 17:00. Nothing fixed; owner to decide.
 - 2026-11-14 - Owner confirmed the run (not the owner) moved the interview row to Interview. Recorded in notes/TRIAL.md. Known issue: the run summary undercounts status changes.
 - 2026-11-14 - /review-brief re-run: still Needs work, one blocking item. All five success criteria met. Blocking: the run summary undercounts status changes (fix it, or owner accepts it as a known limit). Other open items are in docs/REVIEW.md. Nothing fixed.
+- 2026-11-14 - JT-012 done: owner said to fix the summary undercount. /jobmail now builds the Runs summary from the Status writes it made and names each change; Step 9 shows the same count. QA and Integrator found nothing blocking; three wording suggestions left for the owner. Merged as PR #1 (36a6bbc). Not seen live yet: needs the next real email that changes a status.
+- 2026-11-14 - /review-brief third run: Ready to wrap up (docs/REVIEW.md). All five success criteria and the run summary are met. Watch items for the owner: see the fix on a live status change, three wording suggestions, first recruiter email went to Needs a look, two owner steps in Notion, brief schedule line. Built but not yet triggered by a real email: timed interview event, follow-up, reply, assessment, offer and deadline reminders.
+- 2026-11-14 - Status set to Live (owner approved): PROJECTS.md gained a Live status for reviewed projects that keep running. Folder stays in 10-Active.
